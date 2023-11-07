@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    p.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <form id="registration-form" action="confirmation.html" method="post">
+    <h2>Registration Form</h2>
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required placeholder="John Doe">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com">
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required placeholder="johndoe123">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required placeholder="********">
+    <p class="error" id="password-error"></p>
+
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password" required placeholder="********">
+    <p class="error" id="confirm-password-error"></p>
+
+    <input type="submit" value="Register">
+  </form>
+
+  <script>
+    document.getElementById("registration-form").addEventListener("submit", function (event) {
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const passwordError = document.getElementById("password-error");
+      const confirmError = document.getElementById("confirm-password-error");
+
+      if (password !== confirmPassword) {
+        passwordError.textContent = "Passwords do not match.";
+        confirmError.textContent = "Passwords do not match.";
+        event.preventDefault();
+      } else {
+        passwordError.textContent = "";
+        confirmError.textContent = "";
+      }
+    });
+  </script>
+</body>
+</html>
